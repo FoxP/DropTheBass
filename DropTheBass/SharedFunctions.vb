@@ -110,7 +110,7 @@ Module SharedFunctions
                     If File.Exists(sFFmpegPath) Then
                         Dim environmentVar As New Dictionary(Of String, String)
                         environmentVar.Add("SDL_AUDIODRIVER", "directsound")
-                        Call RunCmdCommand("ffplay -nodisp -autoexit " & Convert.ToChar(34) & sSoundPath & Convert.ToChar(34), False, Path.Combine(My.Application.Info.DirectoryPath, "ffmpeg"), environmentVar)
+                        Call RunCmdCommand("ffplay -nodisp -hide_banner -nostats -loglevel panic -autoexit " & Convert.ToChar(34) & sSoundPath & Convert.ToChar(34), False, Path.Combine(My.Application.Info.DirectoryPath, "ffmpeg"), environmentVar)
                     Else
                         MessageBox.Show("Oops, can't find FFmpeg :" & vbNewLine & vbNewLine & sFFmpegPath, My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
