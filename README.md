@@ -10,10 +10,11 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 
 - Supports almost any file type (mp3, mp4, wav, flac, ogg, avi, mkv, ...)
 - Also supports playback of video files (just sound, of course)
+- 250+ meme sounds included (see `sounds` directory)
 - Manage multiple configuration profiles (presets)
 - Import / export of presets from / to XML file
 - Activate / deactivate hotkeys with a click
-- Set keyboard hotkeys for each button
+- Set custom hotkeys for each button
 - Fully portable, no rights / setup needed
 - No administrator rights needed
 - Free, copyleft license
