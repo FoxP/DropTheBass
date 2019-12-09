@@ -287,6 +287,13 @@ Public Class MainForm
     Private Sub saveSettings(ByVal sConfigFilePath As String)
         'Faster / easier to use a dictionary, but not serializable
         config.presets = config.presetsDic.Values.ToList
+        If Not Directory.Exists(Path.GetDirectoryName(sConfigFilePath)) Then
+            Try
+                Directory.CreateDirectory(Path.GetDirectoryName(sConfigFilePath))
+            Catch ex As Exception
+                MessageBox.Show("Oops, can't create directory :" & vbNewLine & vbNewLine & Path.GetDirectoryName(sConfigFilePath) & vbNewLine & vbNewLine & ex.ToString, My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Try
+        End If
         Try
             Call ObjToXMLFile(config, sConfigFilePath)
         Catch ex As Exception
