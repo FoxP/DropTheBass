@@ -81,10 +81,14 @@ Public Class KeyboardHook
     End Function
 
     Public Sub New()
-        HHookID = SetWindowsHookEx(WH_KEYBOARD_LL, KBDLLHookProcDelegate, System.Runtime.InteropServices.Marshal.GetHINSTANCE(System.Reflection.Assembly.GetExecutingAssembly.GetModules()(0)).ToInt32, 0)
-        If HHookID = IntPtr.Zero Then
-            Throw New Exception("Could not set keyboard hook")
-        End If
+        Try
+            HHookID = SetWindowsHookEx(WH_KEYBOARD_LL, KBDLLHookProcDelegate, System.Runtime.InteropServices.Marshal.GetHINSTANCE(System.Reflection.Assembly.GetExecutingAssembly.GetModules()(0)).ToInt32, 0)
+            If HHookID = IntPtr.Zero Then
+                Throw New Exception("Could not set keyboard hook")
+            End If
+        Catch ex As Exception
+            'Oops
+        End Try
     End Sub
 
     Protected Overrides Sub Finalize()
