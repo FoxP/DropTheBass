@@ -86,8 +86,13 @@ Public Class KeyboardHook
             If HHookID = IntPtr.Zero Then
                 Throw New Exception("Could not set keyboard hook")
             End If
-        Catch ex As Exception
-            'Oops
+        Catch ex_1 As Exception
+            Try
+                'For Windows 7 64bits
+                HHookID = SetWindowsHookEx(WH_KEYBOARD_LL, KBDLLHookProcDelegate, 0, 0)
+            Catch ex_2 As Exception
+                'Oops
+            End Try
         End Try
     End Sub
 
