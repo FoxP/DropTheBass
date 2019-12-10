@@ -241,7 +241,7 @@ Public Class MainForm
                     End If
                     b.Height = 50
                     b.Width = 225
-                    AddHandler b.MouseUp, AddressOf editButton
+                    AddHandler b.MouseDown, AddressOf editButton
                     FlowLayoutPanelMain.Controls.Add(b)
                 Next
             End If
