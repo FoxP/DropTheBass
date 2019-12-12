@@ -81,14 +81,16 @@ Module SharedFunctions
         End If
     End Function
 
-    Sub RunCmdCommand(ByVal command As String, Optional ByVal isVisible As Boolean = True, Optional ByVal workingDirectoryPath As String = "", Optional ByVal environmentVar As Dictionary(Of String, String) = Nothing)
+    Sub RunCmdCommand(ByVal exe As String, Optional ByVal args As String = "", Optional ByVal isVisible As Boolean = True, Optional ByVal workingDirectoryPath As String = "", Optional ByVal environmentVar As Dictionary(Of String, String) = Nothing)
         Dim p = New Process()
         If Not isVisible Then
             p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
             p.StartInfo.CreateNoWindow = True
         End If
-        p.StartInfo.FileName = "cmd.exe"
-        p.StartInfo.Arguments = "/K " & """" & command & " && EXIT" & """"
+        p.StartInfo.FileName = exe
+        If Not args = String.Empty Then
+            p.StartInfo.Arguments = args
+        End If
         p.StartInfo.UseShellExecute = False
         If Not environmentVar Is Nothing Then
             For Each k As String In environmentVar.Keys
@@ -99,6 +101,7 @@ Module SharedFunctions
             p.StartInfo.WorkingDirectory = workingDirectoryPath
         End If
         p.Start()
+        p.PriorityClass = ProcessPriorityClass.RealTime
     End Sub
 
     Public Sub playSound(ByVal sSoundPath As String)
@@ -110,7 +113,7 @@ Module SharedFunctions
                     If File.Exists(sFFmpegPath) Then
                         Dim environmentVar As New Dictionary(Of String, String)
                         environmentVar.Add("SDL_AUDIODRIVER", "directsound")
-                        Call RunCmdCommand("ffplay -nodisp -hide_banner -nostats -loglevel panic -autoexit " & Convert.ToChar(34) & sSoundPath & Convert.ToChar(34), False, Path.Combine(My.Application.Info.DirectoryPath, "ffmpeg"), environmentVar)
+                        Call RunCmdCommand(sFFplayPath, "-nodisp -hide_banner -nostats -loglevel panic -autoexit " & Convert.ToChar(34) & sSoundPath & Convert.ToChar(34), False, Path.Combine(My.Application.Info.DirectoryPath, "ffmpeg"), environmentVar)
                     Else
                         MessageBox.Show("Oops, can't find FFmpeg :" & vbNewLine & vbNewLine & sFFmpegPath, My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
