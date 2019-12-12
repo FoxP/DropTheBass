@@ -142,10 +142,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ffmpeg\ffmpeg.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ffmpeg\ffplay.exe">
+    <Content Include="ffmpeg\ffplay_DTB.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ffmpeg\LICENSE.txt">

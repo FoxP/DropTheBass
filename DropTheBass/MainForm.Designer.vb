@@ -35,9 +35,10 @@ Partial Class MainForm
         Me.lbButtons = New System.Windows.Forms.Label()
         Me.cbExport = New System.Windows.Forms.Button()
         Me.cbImport = New System.Windows.Forms.Button()
-        Me.cbHotkeys = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanelBottom = New System.Windows.Forms.TableLayoutPanel()
         Me.cbAbout = New System.Windows.Forms.Button()
+        Me.cbHotkeys = New System.Windows.Forms.CheckBox()
+        Me.cbStop = New System.Windows.Forms.Button()
         CType(Me.nudButtons, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanelMain.SuspendLayout()
         Me.TableLayoutPanelHeader.SuspendLayout()
@@ -192,18 +193,6 @@ Partial Class MainForm
         Me.cbImport.Text = "Import"
         Me.cbImport.UseVisualStyleBackColor = True
         '
-        'cbHotkeys
-        '
-        Me.cbHotkeys.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbHotkeys.AutoSize = True
-        Me.cbHotkeys.Location = New System.Drawing.Point(514, 9)
-        Me.cbHotkeys.Margin = New System.Windows.Forms.Padding(3, 5, 3, 3)
-        Me.cbHotkeys.Name = "cbHotkeys"
-        Me.cbHotkeys.Size = New System.Drawing.Size(104, 17)
-        Me.cbHotkeys.TabIndex = 8
-        Me.cbHotkeys.Text = "Disable hotkeys"
-        Me.cbHotkeys.UseVisualStyleBackColor = True
-        '
         'TableLayoutPanelBottom
         '
         Me.TableLayoutPanelBottom.ColumnCount = 3
@@ -212,6 +201,7 @@ Partial Class MainForm
         Me.TableLayoutPanelBottom.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75.0!))
         Me.TableLayoutPanelBottom.Controls.Add(Me.cbAbout, 2, 0)
         Me.TableLayoutPanelBottom.Controls.Add(Me.cbHotkeys, 1, 0)
+        Me.TableLayoutPanelBottom.Controls.Add(Me.cbStop, 0, 0)
         Me.TableLayoutPanelBottom.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanelBottom.Location = New System.Drawing.Point(4, 403)
         Me.TableLayoutPanelBottom.Name = "TableLayoutPanelBottom"
@@ -226,9 +216,31 @@ Partial Class MainForm
         Me.cbAbout.Location = New System.Drawing.Point(624, 5)
         Me.cbAbout.Name = "cbAbout"
         Me.cbAbout.Size = New System.Drawing.Size(69, 23)
-        Me.cbAbout.TabIndex = 9
+        Me.cbAbout.TabIndex = 10
         Me.cbAbout.Text = "?"
         Me.cbAbout.UseVisualStyleBackColor = True
+        '
+        'cbHotkeys
+        '
+        Me.cbHotkeys.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbHotkeys.AutoSize = True
+        Me.cbHotkeys.Location = New System.Drawing.Point(514, 9)
+        Me.cbHotkeys.Margin = New System.Windows.Forms.Padding(3, 5, 3, 3)
+        Me.cbHotkeys.Name = "cbHotkeys"
+        Me.cbHotkeys.Size = New System.Drawing.Size(104, 17)
+        Me.cbHotkeys.TabIndex = 9
+        Me.cbHotkeys.Text = "Disable hotkeys"
+        Me.cbHotkeys.UseVisualStyleBackColor = True
+        '
+        'cbStop
+        '
+        Me.cbStop.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbStop.Location = New System.Drawing.Point(3, 5)
+        Me.cbStop.Name = "cbStop"
+        Me.cbStop.Size = New System.Drawing.Size(505, 23)
+        Me.cbStop.TabIndex = 8
+        Me.cbStop.Text = "Stop all sounds"
+        Me.cbStop.UseVisualStyleBackColor = True
         '
         'MainForm
         '
@@ -265,4 +277,5 @@ Partial Class MainForm
     Friend WithEvents cbHotkeys As CheckBox
     Friend WithEvents TableLayoutPanelBottom As TableLayoutPanel
     Friend WithEvents cbAbout As Button
+    Friend WithEvents cbStop As Button
 End Class

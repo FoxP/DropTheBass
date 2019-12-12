@@ -323,5 +323,16 @@ Public Class MainForm
         ABOUT.ShowDialog()
     End Sub
 
+    Private Sub cbStop_Click(sender As Object, e As EventArgs) Handles cbStop.Click
+        For Each p As Process In Process.GetProcessesByName("ffplay_DTB")
+            Try
+                p.Kill()
+                p.WaitForExit()
+            Catch ex As Exception
+                'Oops
+            End Try
+        Next
+    End Sub
+
 End Class
 
