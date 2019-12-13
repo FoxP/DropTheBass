@@ -36,11 +36,18 @@ Partial Class EditorForm
         Me.TableLayoutPanelMain = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanelBottom = New System.Windows.Forms.TableLayoutPanel()
         Me.cbCancel = New System.Windows.Forms.Button()
+        Me.gbVolume = New System.Windows.Forms.GroupBox()
+        Me.TableLayoutPanelVolume = New System.Windows.Forms.TableLayoutPanel()
+        Me.TrackBarMain = New System.Windows.Forms.TrackBar()
+        Me.lbVolume = New System.Windows.Forms.Label()
         Me.gbHotkey.SuspendLayout()
         Me.gbSound.SuspendLayout()
         Me.TableLayoutPanelTop.SuspendLayout()
         Me.TableLayoutPanelMain.SuspendLayout()
         Me.TableLayoutPanelBottom.SuspendLayout()
+        Me.gbVolume.SuspendLayout()
+        Me.TableLayoutPanelVolume.SuspendLayout()
+        CType(Me.TrackBarMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gbHotkey
@@ -150,7 +157,7 @@ Partial Class EditorForm
         Me.cbOK.Margin = New System.Windows.Forms.Padding(3, 0, 2, 3)
         Me.cbOK.Name = "cbOK"
         Me.cbOK.Size = New System.Drawing.Size(75, 23)
-        Me.cbOK.TabIndex = 4
+        Me.cbOK.TabIndex = 5
         Me.cbOK.Text = "OK"
         Me.cbOK.UseVisualStyleBackColor = True
         '
@@ -160,15 +167,17 @@ Partial Class EditorForm
         Me.TableLayoutPanelMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanelMain.Controls.Add(Me.gbSound, 0, 0)
         Me.TableLayoutPanelMain.Controls.Add(Me.gbHotkey, 0, 1)
-        Me.TableLayoutPanelMain.Controls.Add(Me.TableLayoutPanelBottom, 0, 2)
+        Me.TableLayoutPanelMain.Controls.Add(Me.TableLayoutPanelBottom, 0, 3)
+        Me.TableLayoutPanelMain.Controls.Add(Me.gbVolume, 0, 2)
         Me.TableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanelMain.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanelMain.Name = "TableLayoutPanelMain"
-        Me.TableLayoutPanelMain.RowCount = 3
+        Me.TableLayoutPanelMain.RowCount = 4
         Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
         Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52.0!))
+        Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
         Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.TableLayoutPanelMain.Size = New System.Drawing.Size(634, 141)
+        Me.TableLayoutPanelMain.Size = New System.Drawing.Size(634, 201)
         Me.TableLayoutPanelMain.TabIndex = 9
         '
         'TableLayoutPanelBottom
@@ -180,13 +189,13 @@ Partial Class EditorForm
         Me.TableLayoutPanelBottom.Controls.Add(Me.cbCancel, 2, 0)
         Me.TableLayoutPanelBottom.Controls.Add(Me.cbOK, 1, 0)
         Me.TableLayoutPanelBottom.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanelBottom.Location = New System.Drawing.Point(3, 112)
+        Me.TableLayoutPanelBottom.Location = New System.Drawing.Point(3, 172)
         Me.TableLayoutPanelBottom.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
         Me.TableLayoutPanelBottom.Name = "TableLayoutPanelBottom"
         Me.TableLayoutPanelBottom.RowCount = 1
         Me.TableLayoutPanelBottom.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanelBottom.Size = New System.Drawing.Size(628, 27)
-        Me.TableLayoutPanelBottom.TabIndex = 4
+        Me.TableLayoutPanelBottom.TabIndex = 5
         '
         'cbCancel
         '
@@ -196,9 +205,60 @@ Partial Class EditorForm
         Me.cbCancel.Margin = New System.Windows.Forms.Padding(4, 0, 2, 3)
         Me.cbCancel.Name = "cbCancel"
         Me.cbCancel.Size = New System.Drawing.Size(74, 23)
-        Me.cbCancel.TabIndex = 5
+        Me.cbCancel.TabIndex = 6
         Me.cbCancel.Text = "Cancel"
         Me.cbCancel.UseVisualStyleBackColor = True
+        '
+        'gbVolume
+        '
+        Me.gbVolume.Controls.Add(Me.TableLayoutPanelVolume)
+        Me.gbVolume.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.gbVolume.Location = New System.Drawing.Point(6, 112)
+        Me.gbVolume.Margin = New System.Windows.Forms.Padding(6, 0, 6, 6)
+        Me.gbVolume.Name = "gbVolume"
+        Me.gbVolume.Padding = New System.Windows.Forms.Padding(3, 3, 5, 3)
+        Me.gbVolume.Size = New System.Drawing.Size(622, 54)
+        Me.gbVolume.TabIndex = 4
+        Me.gbVolume.TabStop = False
+        Me.gbVolume.Text = " Volume : "
+        '
+        'TableLayoutPanelVolume
+        '
+        Me.TableLayoutPanelVolume.ColumnCount = 2
+        Me.TableLayoutPanelVolume.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanelVolume.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
+        Me.TableLayoutPanelVolume.Controls.Add(Me.TrackBarMain, 0, 0)
+        Me.TableLayoutPanelVolume.Controls.Add(Me.lbVolume, 1, 0)
+        Me.TableLayoutPanelVolume.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanelVolume.Location = New System.Drawing.Point(3, 16)
+        Me.TableLayoutPanelVolume.Name = "TableLayoutPanelVolume"
+        Me.TableLayoutPanelVolume.RowCount = 1
+        Me.TableLayoutPanelVolume.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanelVolume.Size = New System.Drawing.Size(614, 35)
+        Me.TableLayoutPanelVolume.TabIndex = 0
+        '
+        'TrackBarMain
+        '
+        Me.TrackBarMain.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TrackBarMain.LargeChange = 10
+        Me.TrackBarMain.Location = New System.Drawing.Point(3, 3)
+        Me.TrackBarMain.Maximum = 100
+        Me.TrackBarMain.Name = "TrackBarMain"
+        Me.TrackBarMain.Size = New System.Drawing.Size(528, 29)
+        Me.TrackBarMain.TabIndex = 4
+        Me.TrackBarMain.TickFrequency = 10
+        Me.TrackBarMain.Value = 100
+        '
+        'lbVolume
+        '
+        Me.lbVolume.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbVolume.AutoSize = True
+        Me.lbVolume.Location = New System.Drawing.Point(537, 11)
+        Me.lbVolume.Name = "lbVolume"
+        Me.lbVolume.Size = New System.Drawing.Size(74, 13)
+        Me.lbVolume.TabIndex = 5
+        Me.lbVolume.Text = "100%"
+        Me.lbVolume.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'EditorForm
         '
@@ -206,12 +266,12 @@ Partial Class EditorForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cbCancel
-        Me.ClientSize = New System.Drawing.Size(634, 141)
+        Me.ClientSize = New System.Drawing.Size(634, 201)
         Me.Controls.Add(Me.TableLayoutPanelMain)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1000000016, 180)
-        Me.MinimumSize = New System.Drawing.Size(500, 180)
+        Me.MaximumSize = New System.Drawing.Size(4096, 240)
+        Me.MinimumSize = New System.Drawing.Size(500, 240)
         Me.Name = "EditorForm"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -223,6 +283,10 @@ Partial Class EditorForm
         Me.TableLayoutPanelTop.PerformLayout()
         Me.TableLayoutPanelMain.ResumeLayout(False)
         Me.TableLayoutPanelBottom.ResumeLayout(False)
+        Me.gbVolume.ResumeLayout(False)
+        Me.TableLayoutPanelVolume.ResumeLayout(False)
+        Me.TableLayoutPanelVolume.PerformLayout()
+        CType(Me.TrackBarMain, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -240,4 +304,8 @@ Partial Class EditorForm
     Friend WithEvents TableLayoutPanelBottom As TableLayoutPanel
     Friend WithEvents cbCancel As Button
     Friend WithEvents TableLayoutPanelTop As TableLayoutPanel
+    Friend WithEvents TrackBarMain As TrackBar
+    Friend WithEvents gbVolume As GroupBox
+    Friend WithEvents TableLayoutPanelVolume As TableLayoutPanel
+    Friend WithEvents lbVolume As Label
 End Class

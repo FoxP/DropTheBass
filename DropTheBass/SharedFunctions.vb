@@ -104,19 +104,19 @@ Module SharedFunctions
         p.PriorityClass = ProcessPriorityClass.RealTime
     End Sub
 
-    Public Sub playSound(ByVal sSoundPath As String)
-        If Not sSoundPath.Trim = String.Empty Then
-            If File.Exists(sSoundPath) Then
+    Public Sub playSound(ByVal s As Sound)
+        If Not s.path.Trim = String.Empty Then
+            If File.Exists(s.path) Then
                 Dim sFFplayPath As String = Path.Combine(My.Application.Info.DirectoryPath, "ffmpeg") & Path.DirectorySeparatorChar & "ffplay_DTB.exe"
                 If File.Exists(sFFplayPath) Then
                     Dim environmentVar As New Dictionary(Of String, String)
                     environmentVar.Add("SDL_AUDIODRIVER", "directsound")
-                    Call RunCmdCommand(sFFplayPath, "-nodisp -hide_banner -nostats -loglevel panic -autoexit " & Convert.ToChar(34) & sSoundPath & Convert.ToChar(34), False, Path.Combine(My.Application.Info.DirectoryPath, "ffmpeg"), environmentVar)
+                    Call RunCmdCommand(sFFplayPath, "-nodisp -hide_banner -nostats -loglevel panic -autoexit -volume " & s.volume.ToString & " " & Convert.ToChar(34) & s.path & Convert.ToChar(34), False, Path.Combine(My.Application.Info.DirectoryPath, "ffmpeg"), environmentVar)
                 Else
                     MessageBox.Show("Oops, can't find FFplay :" & vbNewLine & vbNewLine & sFFplayPath, My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             Else
-                MessageBox.Show("Oops, can't access to :" & vbNewLine & vbNewLine & sSoundPath, My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Oops, can't access to :" & vbNewLine & vbNewLine & s.path, My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Else
             MessageBox.Show("Oops, empty sound path.", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)

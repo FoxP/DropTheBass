@@ -42,6 +42,7 @@ End Class
 
 <Serializable>
 Public Class Sound
+    Public Property volume As Integer = 100
     Public Property name As String = String.Empty
     Public Property path As String = String.Empty
     Public Property key As String = String.Empty

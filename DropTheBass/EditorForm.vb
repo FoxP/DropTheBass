@@ -39,6 +39,8 @@ Public Class EditorForm
                     Else
                         lbHotkey.Text = "None"
                     End If
+                    TrackBarMain.Value = s.volume
+                    lbVolume.Text = s.volume.ToString & "%"
                 Else
                     MessageBox.Show("Oops, can't find preset : " & """" & MainForm.cbPresets.Text & """" & ".", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
@@ -69,6 +71,7 @@ Public Class EditorForm
                     Dim s As Sound = config.presetsDic(MainForm.cbPresets.Text).sounds.Item(Me.Tag.Name - 1)
                     s.path = tbSoundPath.Text
                     s.key = lbHotkey.Text
+                    s.volume = TrackBarMain.Value
                     Me.Tag = Nothing
                     Me.Close()
                     Call MainForm.updateButtonsList()
@@ -89,7 +92,10 @@ Public Class EditorForm
     End Sub
 
     Private Sub cbPlaySound_Click(sender As Object, e As EventArgs) Handles cbPlaySound.Click
-        Call playSound(tbSoundPath.Text)
+        Dim s As New Sound
+        s.path = tbSoundPath.Text
+        s.volume = TrackBarMain.Value
+        Call playSound(s)
     End Sub
 
     Private Sub EditorForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -97,4 +103,9 @@ Public Class EditorForm
         tbSoundPath.SelectionStart = tbSoundPath.Text.Length
         tbSoundPath.DeselectAll()
     End Sub
+
+    Private Sub TrackBarMain_ValueChanged(sender As Object, e As EventArgs) Handles TrackBarMain.ValueChanged
+        lbVolume.Text = TrackBarMain.Value.ToString & "%"
+    End Sub
+
 End Class

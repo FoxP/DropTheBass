@@ -14,7 +14,8 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 - Manage multiple configuration profiles (presets)
 - Import / export of presets from / to XML file
 - Activate / deactivate hotkeys with a click
-- Set custom hotkeys for each button
+- Set custom hotkeys for each sound
+- Adjust volume for each sound
 - Fully portable, no rights / setup needed
 - No administrator rights needed
 - Free, copyleft license
@@ -25,10 +26,8 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 
 ## Todo
 - Localization
-- Add "Stop all sounds" button
 - Add drag & drop between buttons
 - Add drag & drop for sound files
-- Adjust volume gain for each button
 - Set custom name / color for buttons
 - Add better sizing for MainForm
 - Fix bug for hotkeys combo
@@ -36,7 +35,7 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 - Better README for git
 
 ## Libraries
-- ffmpeg and ffplay from [FFmpeg Tools](https://www.ffmpeg.org/)
+- FFplay from [FFmpeg Tools](https://www.ffmpeg.org/)
 - Level Slider emoji :level_slider: from [Twemoji](https://github.com/twitter/twemoji)
 
 ## License

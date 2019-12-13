@@ -31,18 +31,6 @@ Public Class MainForm
     Public sConfigFilePath As String
     Public dontRunHandler As Boolean
 
-    'TODO :
-    'adjust volume gain for each button
-    'set custom name for buttons
-    'add tooltips
-    'add drag & drop between buttons
-    'add drag & drop for files : on buttons + EditorForm
-    'add "Stop all sounds" button
-    'better sizing for MainForm
-    'fix keyboardhook bug for hotkeys combo
-    'create setup / installer
-    'better README for git
-
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.Text = My.Application.Info.AssemblyName & " v" & My.Application.Info.Version.ToString
@@ -121,7 +109,7 @@ Public Class MainForm
                 If config.presetsDic.ContainsKey(cbPresets.Text) Then
                     For Each s As Sound In config.presetsDic(cbPresets.Text).sounds
                         If s.key = Key.ToString Then
-                            Call playSound(s.path)
+                            Call playSound(s)
                         End If
                     Next
                 End If
@@ -309,7 +297,7 @@ Public Class MainForm
             If Not cbPresets.Text = String.Empty Then
                 If config.presetsDic.ContainsKey(cbPresets.Text) Then
                     Dim s As Sound = config.presetsDic(cbPresets.Text).sounds.Item(sender.Name - 1)
-                    Call playSound(s.path)
+                    Call playSound(s)
                 End If
             Else
                 MessageBox.Show("Oops, can't find preset : " & """" & cbPresets.Text & """" & ".", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
