@@ -27,7 +27,6 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 ## Todo
 - Localization
 - Add drag & drop between buttons
-- Add drag & drop for sound files
 - Set custom name / color for buttons
 - Add better sizing for MainForm
 - Fix bug for hotkeys combo

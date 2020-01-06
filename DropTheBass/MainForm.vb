@@ -229,7 +229,10 @@ Public Class MainForm
                     End If
                     b.Height = 50
                     b.Width = 225
+                    b.AllowDrop = True
                     AddHandler b.MouseDown, AddressOf editButton
+                    AddHandler b.DragEnter, AddressOf button_DragEnter
+                    AddHandler b.DragDrop, AddressOf button_DragDrop
                     FlowLayoutPanelMain.Controls.Add(b)
                 Next
             End If
@@ -304,6 +307,41 @@ Public Class MainForm
             End If
         Else
             MessageBox.Show("Oops, no preset selected.", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Private Sub button_DragDrop(sender As Object, e As DragEventArgs)
+        Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+        If Not files.Count = 0 Then
+            If Not files.Count > 1 Then
+                Dim sFilePath As String = files(0)
+                If File.Exists(sFilePath) Then
+                    If Not cbPresets.Text = String.Empty Then
+                        If config.presetsDic.ContainsKey(cbPresets.Text) Then
+                            Dim s As New Sound
+                            s = config.presetsDic(cbPresets.Text).sounds.Item(sender.Name - 1)
+                            sender.Text = Path.GetFileNameWithoutExtension(sFilePath) & If(s.key.Trim <> String.Empty, vbNewLine & s.key, "")
+                            config.presetsDic(cbPresets.Text).sounds.Item(sender.Name - 1).path = sFilePath
+                        Else
+                            MessageBox.Show("Oops, can't find preset : " & """" & cbPresets.Text & """" & ".", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End If
+                    Else
+                        MessageBox.Show("Oops, no preset selected.", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+                Else
+                    MessageBox.Show("Oops, invalid file path :" & vbNewLine & vbNewLine & sFilePath, My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            Else
+                MessageBox.Show("Oops, can't add more than one sound for a button.", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Else
+            'Oops
+        End If
+    End Sub
+
+    Private Sub button_DragEnter(sender As Object, e As DragEventArgs)
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            e.Effect = DragDropEffects.Copy
         End If
     End Sub
 
