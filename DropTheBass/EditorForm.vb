@@ -70,7 +70,11 @@ Public Class EditorForm
                 If config.presetsDic.ContainsKey(MainForm.cbPresets.Text) Then
                     Dim s As Sound = config.presetsDic(MainForm.cbPresets.Text).sounds.Item(Me.Tag.Name - 1)
                     s.path = tbSoundPath.Text
-                    s.key = lbHotkey.Text
+                    If lbHotkey.Text = "None" Then
+                        s.key = String.Empty
+                    Else
+                        s.key = lbHotkey.Text
+                    End If
                     s.volume = TrackBarMain.Value
                     Me.Tag = Nothing
                     Me.Close()
@@ -106,6 +110,10 @@ Public Class EditorForm
 
     Private Sub TrackBarMain_ValueChanged(sender As Object, e As EventArgs) Handles TrackBarMain.ValueChanged
         lbVolume.Text = TrackBarMain.Value.ToString & "%"
+    End Sub
+
+    Private Sub cbDelete_Click(sender As Object, e As EventArgs) Handles cbDelete.Click
+        lbHotkey.Text = "None"
     End Sub
 
 End Class

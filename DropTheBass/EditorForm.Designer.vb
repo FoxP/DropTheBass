@@ -40,6 +40,8 @@ Partial Class EditorForm
         Me.TableLayoutPanelVolume = New System.Windows.Forms.TableLayoutPanel()
         Me.TrackBarMain = New System.Windows.Forms.TrackBar()
         Me.lbVolume = New System.Windows.Forms.Label()
+        Me.cbDelete = New System.Windows.Forms.Button()
+        Me.FlowLayoutPanelHotkey = New System.Windows.Forms.FlowLayoutPanel()
         Me.gbHotkey.SuspendLayout()
         Me.gbSound.SuspendLayout()
         Me.TableLayoutPanelTop.SuspendLayout()
@@ -48,18 +50,19 @@ Partial Class EditorForm
         Me.gbVolume.SuspendLayout()
         Me.TableLayoutPanelVolume.SuspendLayout()
         CType(Me.TrackBarMain, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlowLayoutPanelHotkey.SuspendLayout()
         Me.SuspendLayout()
         '
         'gbHotkey
         '
-        Me.gbHotkey.Controls.Add(Me.tbHotkey)
+        Me.gbHotkey.Controls.Add(Me.FlowLayoutPanelHotkey)
         Me.gbHotkey.Controls.Add(Me.lbHotkey)
         Me.gbHotkey.Controls.Add(Me.lbInfo)
         Me.gbHotkey.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gbHotkey.Location = New System.Drawing.Point(6, 60)
         Me.gbHotkey.Margin = New System.Windows.Forms.Padding(6, 0, 6, 6)
         Me.gbHotkey.Name = "gbHotkey"
-        Me.gbHotkey.Padding = New System.Windows.Forms.Padding(3, 3, 9, 3)
+        Me.gbHotkey.Padding = New System.Windows.Forms.Padding(3, 3, 5, 3)
         Me.gbHotkey.Size = New System.Drawing.Size(622, 46)
         Me.gbHotkey.TabIndex = 3
         Me.gbHotkey.TabStop = False
@@ -67,10 +70,10 @@ Partial Class EditorForm
         '
         'tbHotkey
         '
-        Me.tbHotkey.Dock = System.Windows.Forms.DockStyle.Right
-        Me.tbHotkey.Location = New System.Drawing.Point(459, 16)
+        Me.tbHotkey.Location = New System.Drawing.Point(137, 2)
+        Me.tbHotkey.Margin = New System.Windows.Forms.Padding(3, 2, 4, 3)
         Me.tbHotkey.Name = "tbHotkey"
-        Me.tbHotkey.Size = New System.Drawing.Size(154, 20)
+        Me.tbHotkey.Size = New System.Drawing.Size(72, 20)
         Me.tbHotkey.TabIndex = 3
         '
         'lbHotkey
@@ -157,7 +160,7 @@ Partial Class EditorForm
         Me.cbOK.Margin = New System.Windows.Forms.Padding(3, 0, 2, 3)
         Me.cbOK.Name = "cbOK"
         Me.cbOK.Size = New System.Drawing.Size(75, 23)
-        Me.cbOK.TabIndex = 5
+        Me.cbOK.TabIndex = 6
         Me.cbOK.Text = "OK"
         Me.cbOK.UseVisualStyleBackColor = True
         '
@@ -195,7 +198,7 @@ Partial Class EditorForm
         Me.TableLayoutPanelBottom.RowCount = 1
         Me.TableLayoutPanelBottom.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanelBottom.Size = New System.Drawing.Size(628, 27)
-        Me.TableLayoutPanelBottom.TabIndex = 5
+        Me.TableLayoutPanelBottom.TabIndex = 6
         '
         'cbCancel
         '
@@ -205,7 +208,7 @@ Partial Class EditorForm
         Me.cbCancel.Margin = New System.Windows.Forms.Padding(4, 0, 2, 3)
         Me.cbCancel.Name = "cbCancel"
         Me.cbCancel.Size = New System.Drawing.Size(74, 23)
-        Me.cbCancel.TabIndex = 6
+        Me.cbCancel.TabIndex = 7
         Me.cbCancel.Text = "Cancel"
         Me.cbCancel.UseVisualStyleBackColor = True
         '
@@ -218,7 +221,7 @@ Partial Class EditorForm
         Me.gbVolume.Name = "gbVolume"
         Me.gbVolume.Padding = New System.Windows.Forms.Padding(3, 3, 5, 3)
         Me.gbVolume.Size = New System.Drawing.Size(622, 54)
-        Me.gbVolume.TabIndex = 4
+        Me.gbVolume.TabIndex = 5
         Me.gbVolume.TabStop = False
         Me.gbVolume.Text = " Volume : "
         '
@@ -245,7 +248,7 @@ Partial Class EditorForm
         Me.TrackBarMain.Maximum = 100
         Me.TrackBarMain.Name = "TrackBarMain"
         Me.TrackBarMain.Size = New System.Drawing.Size(528, 29)
-        Me.TrackBarMain.TabIndex = 4
+        Me.TrackBarMain.TabIndex = 5
         Me.TrackBarMain.TickFrequency = 10
         Me.TrackBarMain.Value = 100
         '
@@ -259,6 +262,29 @@ Partial Class EditorForm
         Me.lbVolume.TabIndex = 5
         Me.lbVolume.Text = "100%"
         Me.lbVolume.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'cbDelete
+        '
+        Me.cbDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbDelete.Location = New System.Drawing.Point(216, 1)
+        Me.cbDelete.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
+        Me.cbDelete.Name = "cbDelete"
+        Me.cbDelete.Size = New System.Drawing.Size(74, 22)
+        Me.cbDelete.TabIndex = 4
+        Me.cbDelete.Text = "Clear"
+        Me.cbDelete.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanelHotkey
+        '
+        Me.FlowLayoutPanelHotkey.Controls.Add(Me.cbDelete)
+        Me.FlowLayoutPanelHotkey.Controls.Add(Me.tbHotkey)
+        Me.FlowLayoutPanelHotkey.Dock = System.Windows.Forms.DockStyle.Right
+        Me.FlowLayoutPanelHotkey.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
+        Me.FlowLayoutPanelHotkey.Location = New System.Drawing.Point(324, 16)
+        Me.FlowLayoutPanelHotkey.Margin = New System.Windows.Forms.Padding(0)
+        Me.FlowLayoutPanelHotkey.Name = "FlowLayoutPanelHotkey"
+        Me.FlowLayoutPanelHotkey.Size = New System.Drawing.Size(293, 27)
+        Me.FlowLayoutPanelHotkey.TabIndex = 5
         '
         'EditorForm
         '
@@ -287,6 +313,8 @@ Partial Class EditorForm
         Me.TableLayoutPanelVolume.ResumeLayout(False)
         Me.TableLayoutPanelVolume.PerformLayout()
         CType(Me.TrackBarMain, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlowLayoutPanelHotkey.ResumeLayout(False)
+        Me.FlowLayoutPanelHotkey.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -308,4 +336,6 @@ Partial Class EditorForm
     Friend WithEvents gbVolume As GroupBox
     Friend WithEvents TableLayoutPanelVolume As TableLayoutPanel
     Friend WithEvents lbVolume As Label
+    Friend WithEvents FlowLayoutPanelHotkey As FlowLayoutPanel
+    Friend WithEvents cbDelete As Button
 End Class
