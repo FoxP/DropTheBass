@@ -14,6 +14,7 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 - Manage multiple configuration profiles (presets)
 - Import / export of presets from / to XML file
 - Activate / deactivate hotkeys with a click
+- Drag & drop sound files on buttons
 - Set custom hotkeys for each sound
 - Adjust volume for each sound
 - Fully portable, no rights / setup needed
@@ -25,13 +26,11 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 - Microsoft Windows Vista or later
 
 ## Todo
-- Localization
 - Add drag & drop between buttons
 - Set custom name / color for buttons
 - Add better sizing for MainForm
 - Fix bug for hotkeys combo
 - Create setup / installer
-- Better README for git
 
 ## Libraries
 - FFplay from [FFmpeg Tools](https://www.ffmpeg.org/)

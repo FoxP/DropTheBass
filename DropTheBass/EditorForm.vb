@@ -21,6 +21,8 @@
 '
 '-----------------------------------------------------------------------------------------------------------------------------------------------
 
+Imports System.IO
+
 Public Class EditorForm
 
     Private Sub EditorForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -54,6 +56,30 @@ Public Class EditorForm
 
     Private Sub cbGetSoundPath_Click(sender As Object, e As EventArgs) Handles cbGetSoundPath.Click
         tbSoundPath.Text = getFileFromDialog()
+    End Sub
+
+    Private Sub button_DragDrop(sender As Object, e As DragEventArgs) Handles cbGetSoundPath.DragDrop, tbSoundPath.DragDrop
+        Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+        If Not files.Count = 0 Then
+            If Not files.Count > 1 Then
+                Dim sFilePath As String = files(0)
+                If File.Exists(sFilePath) Then
+                    tbSoundPath.Text = sFilePath
+                Else
+                    MessageBox.Show("Oops, invalid file path :" & vbNewLine & vbNewLine & sFilePath, My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            Else
+                MessageBox.Show("Oops, can't add more than one sound for a button.", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Else
+            'Oops
+        End If
+    End Sub
+
+    Private Sub button_DragEnter(sender As Object, e As DragEventArgs) Handles cbGetSoundPath.DragEnter, tbSoundPath.DragEnter
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            e.Effect = DragDropEffects.Copy
+        End If
     End Sub
 
     Private Sub tbHotkey_KeyDown(sender As Object, e As KeyEventArgs) Handles tbHotkey.KeyDown

@@ -136,6 +136,7 @@ Partial Class EditorForm
         '
         'tbSoundPath
         '
+        Me.tbSoundPath.AllowDrop = True
         Me.tbSoundPath.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbSoundPath.Location = New System.Drawing.Point(8, 4)
         Me.tbSoundPath.Margin = New System.Windows.Forms.Padding(8, 3, 3, 3)
@@ -145,6 +146,7 @@ Partial Class EditorForm
         '
         'cbGetSoundPath
         '
+        Me.cbGetSoundPath.AllowDrop = True
         Me.cbGetSoundPath.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbGetSoundPath.Location = New System.Drawing.Point(457, 3)
         Me.cbGetSoundPath.Name = "cbGetSoundPath"
