@@ -299,8 +299,13 @@ Public Class MainForm
         ElseIf e.Button = MouseButtons.Left Then
             If Not cbPresets.Text = String.Empty Then
                 If config.presetsDic.ContainsKey(cbPresets.Text) Then
-                    Dim s As Sound = config.presetsDic(cbPresets.Text).sounds.Item(sender.Name - 1)
-                    Call playSound(s)
+                    If config.presetsDic(cbPresets.Text).sounds.Item(sender.Name - 1).path <> String.Empty Then
+                        Dim s As Sound = config.presetsDic(cbPresets.Text).sounds.Item(sender.Name - 1)
+                        Call playSound(s)
+                    Else
+                        EditorForm.Tag = sender
+                        EditorForm.ShowDialog()
+                    End If
                 End If
             Else
                 MessageBox.Show("Oops, can't find preset : " & """" & cbPresets.Text & """" & ".", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
