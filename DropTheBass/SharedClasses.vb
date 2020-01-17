@@ -46,6 +46,7 @@ Public Class Sound
     Public Property name As String = String.Empty
     Public Property path As String = String.Empty
     Public Property key As String = String.Empty
+    Public Property count As Integer = 1
     Public Sub New()
     End Sub
 End Class

@@ -36,6 +36,7 @@ Partial Class MainForm
         Me.cbExport = New System.Windows.Forms.Button()
         Me.cbImport = New System.Windows.Forms.Button()
         Me.TableLayoutPanelBottom = New System.Windows.Forms.TableLayoutPanel()
+        Me.cbOverlap = New System.Windows.Forms.CheckBox()
         Me.cbAbout = New System.Windows.Forms.Button()
         Me.cbHotkeys = New System.Windows.Forms.CheckBox()
         Me.cbStop = New System.Windows.Forms.Button()
@@ -195,12 +196,14 @@ Partial Class MainForm
         '
         'TableLayoutPanelBottom
         '
-        Me.TableLayoutPanelBottom.ColumnCount = 3
+        Me.TableLayoutPanelBottom.ColumnCount = 4
         Me.TableLayoutPanelBottom.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanelBottom.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110.0!))
+        Me.TableLayoutPanelBottom.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110.0!))
         Me.TableLayoutPanelBottom.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75.0!))
-        Me.TableLayoutPanelBottom.Controls.Add(Me.cbAbout, 2, 0)
-        Me.TableLayoutPanelBottom.Controls.Add(Me.cbHotkeys, 1, 0)
+        Me.TableLayoutPanelBottom.Controls.Add(Me.cbOverlap, 0, 0)
+        Me.TableLayoutPanelBottom.Controls.Add(Me.cbAbout, 3, 0)
+        Me.TableLayoutPanelBottom.Controls.Add(Me.cbHotkeys, 2, 0)
         Me.TableLayoutPanelBottom.Controls.Add(Me.cbStop, 0, 0)
         Me.TableLayoutPanelBottom.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanelBottom.Location = New System.Drawing.Point(4, 403)
@@ -210,13 +213,25 @@ Partial Class MainForm
         Me.TableLayoutPanelBottom.Size = New System.Drawing.Size(696, 34)
         Me.TableLayoutPanelBottom.TabIndex = 8
         '
+        'cbOverlap
+        '
+        Me.cbOverlap.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbOverlap.AutoSize = True
+        Me.cbOverlap.Location = New System.Drawing.Point(404, 9)
+        Me.cbOverlap.Margin = New System.Windows.Forms.Padding(3, 5, 3, 3)
+        Me.cbOverlap.Name = "cbOverlap"
+        Me.cbOverlap.Size = New System.Drawing.Size(104, 17)
+        Me.cbOverlap.TabIndex = 9
+        Me.cbOverlap.Text = "Overlap sounds"
+        Me.cbOverlap.UseVisualStyleBackColor = True
+        '
         'cbAbout
         '
         Me.cbAbout.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbAbout.Location = New System.Drawing.Point(624, 5)
         Me.cbAbout.Name = "cbAbout"
         Me.cbAbout.Size = New System.Drawing.Size(69, 23)
-        Me.cbAbout.TabIndex = 10
+        Me.cbAbout.TabIndex = 11
         Me.cbAbout.Text = "?"
         Me.cbAbout.UseVisualStyleBackColor = True
         '
@@ -228,7 +243,7 @@ Partial Class MainForm
         Me.cbHotkeys.Margin = New System.Windows.Forms.Padding(3, 5, 3, 3)
         Me.cbHotkeys.Name = "cbHotkeys"
         Me.cbHotkeys.Size = New System.Drawing.Size(104, 17)
-        Me.cbHotkeys.TabIndex = 9
+        Me.cbHotkeys.TabIndex = 10
         Me.cbHotkeys.Text = "Disable hotkeys"
         Me.cbHotkeys.UseVisualStyleBackColor = True
         '
@@ -237,7 +252,7 @@ Partial Class MainForm
         Me.cbStop.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbStop.Location = New System.Drawing.Point(3, 5)
         Me.cbStop.Name = "cbStop"
-        Me.cbStop.Size = New System.Drawing.Size(505, 23)
+        Me.cbStop.Size = New System.Drawing.Size(395, 23)
         Me.cbStop.TabIndex = 8
         Me.cbStop.Text = "Stop all sounds"
         Me.cbStop.UseVisualStyleBackColor = True
@@ -278,4 +293,5 @@ Partial Class MainForm
     Friend WithEvents TableLayoutPanelBottom As TableLayoutPanel
     Friend WithEvents cbAbout As Button
     Friend WithEvents cbStop As Button
+    Friend WithEvents cbOverlap As CheckBox
 End Class

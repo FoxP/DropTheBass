@@ -43,6 +43,16 @@ Public Class EditorForm
                     End If
                     TrackBarMain.Value = s.volume
                     lbVolume.Text = s.volume.ToString & "%"
+                    If s.count = 0 Then
+                        cbLoop.Checked = True
+                        nudLoop.Enabled = False
+                        nudLoop.Minimum = 0
+                    Else
+                        cbLoop.Checked = False
+                        nudLoop.Enabled = True
+                        nudLoop.Minimum = 1
+                    End If
+                    nudLoop.Value = s.count
                 Else
                     MessageBox.Show("Oops, can't find preset : " & """" & MainForm.cbPresets.Text & """" & ".", My.Application.Info.AssemblyName, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
@@ -102,6 +112,7 @@ Public Class EditorForm
                         s.key = lbHotkey.Text
                     End If
                     s.volume = TrackBarMain.Value
+                    s.count = nudLoop.Value
                     Me.Tag = Nothing
                     Me.Close()
                     Call MainForm.updateButtonsList()
@@ -125,6 +136,9 @@ Public Class EditorForm
         Dim s As New Sound
         s.path = tbSoundPath.Text
         s.volume = TrackBarMain.Value
+        If Not MainForm.cbOverlap.Checked Then
+            Call stopSound()
+        End If
         Call playSound(s)
     End Sub
 
@@ -140,6 +154,18 @@ Public Class EditorForm
 
     Private Sub cbDelete_Click(sender As Object, e As EventArgs) Handles cbDelete.Click
         lbHotkey.Text = "None"
+    End Sub
+
+    Private Sub cbLoop_CheckedChanged(sender As Object, e As EventArgs) Handles cbLoop.CheckedChanged
+        If cbLoop.Checked Then
+            nudLoop.Enabled = False
+            nudLoop.Minimum = 0
+            nudLoop.Value = 0
+        Else
+            nudLoop.Enabled = True
+            nudLoop.Minimum = 1
+            nudLoop.Value = 1
+        End If
     End Sub
 
 End Class

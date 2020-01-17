@@ -24,6 +24,8 @@ Partial Class EditorForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorForm))
         Me.gbHotkey = New System.Windows.Forms.GroupBox()
+        Me.FlowLayoutPanelHotkey = New System.Windows.Forms.FlowLayoutPanel()
+        Me.cbDelete = New System.Windows.Forms.Button()
         Me.tbHotkey = New System.Windows.Forms.TextBox()
         Me.lbHotkey = New System.Windows.Forms.Label()
         Me.lbInfo = New System.Windows.Forms.Label()
@@ -40,9 +42,12 @@ Partial Class EditorForm
         Me.TableLayoutPanelVolume = New System.Windows.Forms.TableLayoutPanel()
         Me.TrackBarMain = New System.Windows.Forms.TrackBar()
         Me.lbVolume = New System.Windows.Forms.Label()
-        Me.cbDelete = New System.Windows.Forms.Button()
-        Me.FlowLayoutPanelHotkey = New System.Windows.Forms.FlowLayoutPanel()
+        Me.gbLoop = New System.Windows.Forms.GroupBox()
+        Me.TableLayoutPanelLoop = New System.Windows.Forms.TableLayoutPanel()
+        Me.cbLoop = New System.Windows.Forms.CheckBox()
+        Me.nudLoop = New System.Windows.Forms.NumericUpDown()
         Me.gbHotkey.SuspendLayout()
+        Me.FlowLayoutPanelHotkey.SuspendLayout()
         Me.gbSound.SuspendLayout()
         Me.TableLayoutPanelTop.SuspendLayout()
         Me.TableLayoutPanelMain.SuspendLayout()
@@ -50,7 +55,9 @@ Partial Class EditorForm
         Me.gbVolume.SuspendLayout()
         Me.TableLayoutPanelVolume.SuspendLayout()
         CType(Me.TrackBarMain, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.FlowLayoutPanelHotkey.SuspendLayout()
+        Me.gbLoop.SuspendLayout()
+        Me.TableLayoutPanelLoop.SuspendLayout()
+        CType(Me.nudLoop, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gbHotkey
@@ -67,6 +74,29 @@ Partial Class EditorForm
         Me.gbHotkey.TabIndex = 3
         Me.gbHotkey.TabStop = False
         Me.gbHotkey.Text = " Hotkey : "
+        '
+        'FlowLayoutPanelHotkey
+        '
+        Me.FlowLayoutPanelHotkey.Controls.Add(Me.cbDelete)
+        Me.FlowLayoutPanelHotkey.Controls.Add(Me.tbHotkey)
+        Me.FlowLayoutPanelHotkey.Dock = System.Windows.Forms.DockStyle.Right
+        Me.FlowLayoutPanelHotkey.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
+        Me.FlowLayoutPanelHotkey.Location = New System.Drawing.Point(324, 16)
+        Me.FlowLayoutPanelHotkey.Margin = New System.Windows.Forms.Padding(0)
+        Me.FlowLayoutPanelHotkey.Name = "FlowLayoutPanelHotkey"
+        Me.FlowLayoutPanelHotkey.Size = New System.Drawing.Size(293, 27)
+        Me.FlowLayoutPanelHotkey.TabIndex = 5
+        '
+        'cbDelete
+        '
+        Me.cbDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbDelete.Location = New System.Drawing.Point(216, 1)
+        Me.cbDelete.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
+        Me.cbDelete.Name = "cbDelete"
+        Me.cbDelete.Size = New System.Drawing.Size(74, 22)
+        Me.cbDelete.TabIndex = 4
+        Me.cbDelete.Text = "Clear"
+        Me.cbDelete.UseVisualStyleBackColor = True
         '
         'tbHotkey
         '
@@ -162,7 +192,7 @@ Partial Class EditorForm
         Me.cbOK.Margin = New System.Windows.Forms.Padding(3, 0, 2, 3)
         Me.cbOK.Name = "cbOK"
         Me.cbOK.Size = New System.Drawing.Size(75, 23)
-        Me.cbOK.TabIndex = 6
+        Me.cbOK.TabIndex = 8
         Me.cbOK.Text = "OK"
         Me.cbOK.UseVisualStyleBackColor = True
         '
@@ -172,17 +202,19 @@ Partial Class EditorForm
         Me.TableLayoutPanelMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanelMain.Controls.Add(Me.gbSound, 0, 0)
         Me.TableLayoutPanelMain.Controls.Add(Me.gbHotkey, 0, 1)
-        Me.TableLayoutPanelMain.Controls.Add(Me.TableLayoutPanelBottom, 0, 3)
+        Me.TableLayoutPanelMain.Controls.Add(Me.TableLayoutPanelBottom, 0, 4)
         Me.TableLayoutPanelMain.Controls.Add(Me.gbVolume, 0, 2)
+        Me.TableLayoutPanelMain.Controls.Add(Me.gbLoop, 0, 3)
         Me.TableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanelMain.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanelMain.Name = "TableLayoutPanelMain"
-        Me.TableLayoutPanelMain.RowCount = 4
+        Me.TableLayoutPanelMain.RowCount = 5
         Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
         Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52.0!))
         Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
+        Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55.0!))
         Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.TableLayoutPanelMain.Size = New System.Drawing.Size(634, 201)
+        Me.TableLayoutPanelMain.Size = New System.Drawing.Size(634, 256)
         Me.TableLayoutPanelMain.TabIndex = 9
         '
         'TableLayoutPanelBottom
@@ -194,13 +226,13 @@ Partial Class EditorForm
         Me.TableLayoutPanelBottom.Controls.Add(Me.cbCancel, 2, 0)
         Me.TableLayoutPanelBottom.Controls.Add(Me.cbOK, 1, 0)
         Me.TableLayoutPanelBottom.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanelBottom.Location = New System.Drawing.Point(3, 172)
+        Me.TableLayoutPanelBottom.Location = New System.Drawing.Point(3, 227)
         Me.TableLayoutPanelBottom.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
         Me.TableLayoutPanelBottom.Name = "TableLayoutPanelBottom"
         Me.TableLayoutPanelBottom.RowCount = 1
         Me.TableLayoutPanelBottom.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanelBottom.Size = New System.Drawing.Size(628, 27)
-        Me.TableLayoutPanelBottom.TabIndex = 6
+        Me.TableLayoutPanelBottom.TabIndex = 8
         '
         'cbCancel
         '
@@ -210,7 +242,7 @@ Partial Class EditorForm
         Me.cbCancel.Margin = New System.Windows.Forms.Padding(4, 0, 2, 3)
         Me.cbCancel.Name = "cbCancel"
         Me.cbCancel.Size = New System.Drawing.Size(74, 23)
-        Me.cbCancel.TabIndex = 7
+        Me.cbCancel.TabIndex = 9
         Me.cbCancel.Text = "Cancel"
         Me.cbCancel.UseVisualStyleBackColor = True
         '
@@ -232,6 +264,8 @@ Partial Class EditorForm
         Me.TableLayoutPanelVolume.ColumnCount = 2
         Me.TableLayoutPanelVolume.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanelVolume.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
+        Me.TableLayoutPanelVolume.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanelVolume.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanelVolume.Controls.Add(Me.TrackBarMain, 0, 0)
         Me.TableLayoutPanelVolume.Controls.Add(Me.lbVolume, 1, 0)
         Me.TableLayoutPanelVolume.Dock = System.Windows.Forms.DockStyle.Fill
@@ -265,28 +299,58 @@ Partial Class EditorForm
         Me.lbVolume.Text = "100%"
         Me.lbVolume.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'cbDelete
+        'gbLoop
         '
-        Me.cbDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbDelete.Location = New System.Drawing.Point(216, 1)
-        Me.cbDelete.Margin = New System.Windows.Forms.Padding(3, 1, 3, 3)
-        Me.cbDelete.Name = "cbDelete"
-        Me.cbDelete.Size = New System.Drawing.Size(74, 22)
-        Me.cbDelete.TabIndex = 4
-        Me.cbDelete.Text = "Clear"
-        Me.cbDelete.UseVisualStyleBackColor = True
+        Me.gbLoop.Controls.Add(Me.TableLayoutPanelLoop)
+        Me.gbLoop.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.gbLoop.Location = New System.Drawing.Point(6, 172)
+        Me.gbLoop.Margin = New System.Windows.Forms.Padding(6, 0, 6, 6)
+        Me.gbLoop.Name = "gbLoop"
+        Me.gbLoop.Padding = New System.Windows.Forms.Padding(3, 3, 5, 3)
+        Me.gbLoop.Size = New System.Drawing.Size(622, 49)
+        Me.gbLoop.TabIndex = 6
+        Me.gbLoop.TabStop = False
+        Me.gbLoop.Text = " Loop : "
         '
-        'FlowLayoutPanelHotkey
+        'TableLayoutPanelLoop
         '
-        Me.FlowLayoutPanelHotkey.Controls.Add(Me.cbDelete)
-        Me.FlowLayoutPanelHotkey.Controls.Add(Me.tbHotkey)
-        Me.FlowLayoutPanelHotkey.Dock = System.Windows.Forms.DockStyle.Right
-        Me.FlowLayoutPanelHotkey.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
-        Me.FlowLayoutPanelHotkey.Location = New System.Drawing.Point(324, 16)
-        Me.FlowLayoutPanelHotkey.Margin = New System.Windows.Forms.Padding(0)
-        Me.FlowLayoutPanelHotkey.Name = "FlowLayoutPanelHotkey"
-        Me.FlowLayoutPanelHotkey.Size = New System.Drawing.Size(293, 27)
-        Me.FlowLayoutPanelHotkey.TabIndex = 5
+        Me.TableLayoutPanelLoop.ColumnCount = 2
+        Me.TableLayoutPanelLoop.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanelLoop.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
+        Me.TableLayoutPanelLoop.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanelLoop.Controls.Add(Me.cbLoop, 0, 0)
+        Me.TableLayoutPanelLoop.Controls.Add(Me.nudLoop, 1, 0)
+        Me.TableLayoutPanelLoop.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanelLoop.Location = New System.Drawing.Point(3, 16)
+        Me.TableLayoutPanelLoop.Name = "TableLayoutPanelLoop"
+        Me.TableLayoutPanelLoop.RowCount = 1
+        Me.TableLayoutPanelLoop.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanelLoop.Size = New System.Drawing.Size(614, 30)
+        Me.TableLayoutPanelLoop.TabIndex = 0
+        '
+        'cbLoop
+        '
+        Me.cbLoop.AutoSize = True
+        Me.cbLoop.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.cbLoop.Location = New System.Drawing.Point(9, 3)
+        Me.cbLoop.Margin = New System.Windows.Forms.Padding(9, 3, 3, 3)
+        Me.cbLoop.Name = "cbLoop"
+        Me.cbLoop.Size = New System.Drawing.Size(522, 24)
+        Me.cbLoop.TabIndex = 6
+        Me.cbLoop.Text = "Forever"
+        Me.cbLoop.UseVisualStyleBackColor = True
+        '
+        'nudLoop
+        '
+        Me.nudLoop.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.nudLoop.Location = New System.Drawing.Point(538, 5)
+        Me.nudLoop.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.nudLoop.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.nudLoop.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nudLoop.Name = "nudLoop"
+        Me.nudLoop.Size = New System.Drawing.Size(72, 20)
+        Me.nudLoop.TabIndex = 7
+        Me.nudLoop.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'EditorForm
         '
@@ -294,18 +358,20 @@ Partial Class EditorForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cbCancel
-        Me.ClientSize = New System.Drawing.Size(634, 201)
+        Me.ClientSize = New System.Drawing.Size(634, 256)
         Me.Controls.Add(Me.TableLayoutPanelMain)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(4096, 240)
-        Me.MinimumSize = New System.Drawing.Size(500, 240)
+        Me.MaximumSize = New System.Drawing.Size(4096, 295)
+        Me.MinimumSize = New System.Drawing.Size(500, 295)
         Me.Name = "EditorForm"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "EditorForm"
         Me.gbHotkey.ResumeLayout(False)
         Me.gbHotkey.PerformLayout()
+        Me.FlowLayoutPanelHotkey.ResumeLayout(False)
+        Me.FlowLayoutPanelHotkey.PerformLayout()
         Me.gbSound.ResumeLayout(False)
         Me.TableLayoutPanelTop.ResumeLayout(False)
         Me.TableLayoutPanelTop.PerformLayout()
@@ -315,8 +381,10 @@ Partial Class EditorForm
         Me.TableLayoutPanelVolume.ResumeLayout(False)
         Me.TableLayoutPanelVolume.PerformLayout()
         CType(Me.TrackBarMain, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.FlowLayoutPanelHotkey.ResumeLayout(False)
-        Me.FlowLayoutPanelHotkey.PerformLayout()
+        Me.gbLoop.ResumeLayout(False)
+        Me.TableLayoutPanelLoop.ResumeLayout(False)
+        Me.TableLayoutPanelLoop.PerformLayout()
+        CType(Me.nudLoop, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -340,4 +408,8 @@ Partial Class EditorForm
     Friend WithEvents lbVolume As Label
     Friend WithEvents FlowLayoutPanelHotkey As FlowLayoutPanel
     Friend WithEvents cbDelete As Button
+    Friend WithEvents gbLoop As GroupBox
+    Friend WithEvents TableLayoutPanelLoop As TableLayoutPanel
+    Friend WithEvents cbLoop As CheckBox
+    Friend WithEvents nudLoop As NumericUpDown
 End Class

@@ -55,6 +55,14 @@ Public Class MainForm
             Me.Width = My.Settings.iWidth
         End If
         cbHotkeys.Checked = My.Settings.bHotkeys
+        cbOverlap.Checked = My.Settings.bOverlap
+
+        'TODO
+        'Dim mo As ManagementObjectSearcher = New ManagementObjectSearcher("select * from Win32_SoundDevice")
+        'For Each soundDevice As ManagementObject In mo.Get()
+        '    Debug.WriteLine("d : " & soundDevice.GetPropertyValue("DeviceId"))
+        '    Debug.WriteLine("m : " & soundDevice.GetPropertyValue("Manufacturer"))
+        'Next
 
     End Sub
 
@@ -64,6 +72,7 @@ Public Class MainForm
         My.Settings.iWidth = Me.Width
         My.Settings.sPresetName = cbPresets.Text
         My.Settings.bHotkeys = cbHotkeys.Checked
+        My.Settings.bOverlap = cbOverlap.Checked
     End Sub
 
     Private Sub nudButtons_ValueChanged(sender As Object, e As EventArgs) Handles nudButtons.ValueChanged
@@ -109,6 +118,9 @@ Public Class MainForm
                 If config.presetsDic.ContainsKey(cbPresets.Text) Then
                     For Each s As Sound In config.presetsDic(cbPresets.Text).sounds
                         If s.key = Key.ToString Then
+                            If Not cbOverlap.Checked Then
+                                Call stopSound()
+                            End If
                             Call playSound(s)
                         End If
                     Next
@@ -301,6 +313,9 @@ Public Class MainForm
                 If config.presetsDic.ContainsKey(cbPresets.Text) Then
                     If config.presetsDic(cbPresets.Text).sounds.Item(sender.Name - 1).path <> String.Empty Then
                         Dim s As Sound = config.presetsDic(cbPresets.Text).sounds.Item(sender.Name - 1)
+                        If Not cbOverlap.Checked Then
+                            Call stopSound()
+                        End If
                         Call playSound(s)
                     Else
                         EditorForm.Tag = sender
@@ -355,14 +370,7 @@ Public Class MainForm
     End Sub
 
     Private Sub cbStop_Click(sender As Object, e As EventArgs) Handles cbStop.Click
-        For Each p As Process In Process.GetProcessesByName("ffplay_DTB")
-            Try
-                p.Kill()
-                p.WaitForExit()
-            Catch ex As Exception
-                'Oops
-            End Try
-        Next
+        Call stopSound()
     End Sub
 
 End Class
