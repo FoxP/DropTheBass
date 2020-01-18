@@ -18,6 +18,7 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 - Set custom hotkeys for each sound
 - Adjust volume and loop(s) for each sound
 - Overlap sounds or not
+- Run at Windows startup, or not
 - Fully portable, no rights / setup needed
 - No administrator rights needed
 - Free, copyleft license
@@ -29,12 +30,10 @@ A simple (yet powerful) soundboard for Windows. Be ready to D-D-D-D-DROP THE BAS
 ## Todo
 - Set audio output device
 - Add pause / resume buttons
-- Add drag & drop between buttons
-- Set custom name / color for buttons
+- Set custom name / color / order for buttons
 - Add hotkey for pause / resume / stop
 - Add better sizing for MainForm
 - Fix bug for hotkeys combo
-- Create setup / installer
 
 ## Configuration files
 - Presets : `C:\Users\%USERNAME%\AppData\Local\DropTheBass\config.xml`

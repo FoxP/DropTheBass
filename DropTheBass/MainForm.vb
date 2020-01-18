@@ -242,7 +242,7 @@ Public Class MainForm
                         b.Text = Path.GetFileNameWithoutExtension(s.path) & If(s.key.Trim <> String.Empty, vbNewLine & s.key, "")
                     Else
 #If DEBUG Then
-                    b.Text = s.name
+                        b.Text = s.name
 #Else
                         b.Text = "(No sound file)"
 #End If
