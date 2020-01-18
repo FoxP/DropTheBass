@@ -140,4 +140,39 @@ Module SharedFunctions
         Next
     End Sub
 
+    Sub createShortCut(ByVal sTargetPath As String, ByVal sShortCutPath As String, ByVal sShortCutName As String, Optional ByVal sArguments As String = "")
+        Dim oShell As Object
+        Dim oLink As Object
+        Try
+            oShell = CreateObject("WScript.Shell")
+            oLink = oShell.CreateShortcut(sShortCutPath & "\" & sShortCutName & ".lnk")
+            oLink.Arguments = sArguments
+            oLink.TargetPath = sTargetPath
+            oLink.WindowStyle = 1
+            oLink.Save()
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Function getShortCutTarget(ByVal sPath As String) As String
+        Dim shell = CreateObject("WScript.Shell")
+        getShortCutTarget = shell.CreateShortcut(sPath).TargetPath
+    End Function
+
+    Sub addExeToStartupFolder()
+        If Not File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), My.Application.Info.AssemblyName) & ".lnk") Then
+            Call createShortCut(Application.ExecutablePath, Environment.GetFolderPath(Environment.SpecialFolder.Startup), My.Application.Info.AssemblyName, String.Empty)
+        Else
+            If (UCase(getShortCutTarget(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), My.Application.Info.AssemblyName) & ".lnk")) <> UCase(Application.ExecutablePath)) Then
+                Call createShortCut(Application.ExecutablePath, Environment.GetFolderPath(Environment.SpecialFolder.Startup), My.Application.Info.AssemblyName, String.Empty)
+            End If
+        End If
+    End Sub
+
+    Sub deleteExeFromStartupFolder()
+        If File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), My.Application.Info.AssemblyName) & ".lnk") Then
+            File.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), My.Application.Info.AssemblyName) & ".lnk")
+        End If
+    End Sub
+
 End Module

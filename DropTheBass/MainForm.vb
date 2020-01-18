@@ -56,6 +56,13 @@ Public Class MainForm
         End If
         cbHotkeys.Checked = My.Settings.bHotkeys
         cbOverlap.Checked = My.Settings.bOverlap
+        cbStartup.Checked = My.Settings.bStartup
+
+        If My.Settings.bStartup Then
+            Call addExeToStartupFolder()
+        Else
+            Call deleteExeFromStartupFolder()
+        End If
 
         'TODO
         'Dim mo As ManagementObjectSearcher = New ManagementObjectSearcher("select * from Win32_SoundDevice")
@@ -73,6 +80,7 @@ Public Class MainForm
         My.Settings.sPresetName = cbPresets.Text
         My.Settings.bHotkeys = cbHotkeys.Checked
         My.Settings.bOverlap = cbOverlap.Checked
+        My.Settings.bStartup = cbStartup.Checked
     End Sub
 
     Private Sub nudButtons_ValueChanged(sender As Object, e As EventArgs) Handles nudButtons.ValueChanged
@@ -371,6 +379,14 @@ Public Class MainForm
 
     Private Sub cbStop_Click(sender As Object, e As EventArgs) Handles cbStop.Click
         Call stopSound()
+    End Sub
+
+    Private Sub cbStartup_CheckedChanged(sender As Object, e As EventArgs) Handles cbStartup.CheckedChanged
+        If cbStartup.Checked Then
+            Call addExeToStartupFolder()
+        Else
+            Call deleteExeFromStartupFolder()
+        End If
     End Sub
 
 End Class
